@@ -5,6 +5,7 @@
 
 ## test 1
 ```
+# initial version
 self.friction[:, 0, :] = -0.02*torch.sign(self.controller.body_drone_linvels)*self.controller. body_drone_linvels**2
 self.forces[:,0,2] = common_thrust
 self.forces[:,0,:] += self.friction[:,0,:]
@@ -23,6 +24,7 @@ self.forces[:,0,:] += self.friction[:,0,:]
 
 ## test 2
 ```
+# remove the minus sign in self.friction
 self.friction[:, 0, :] = 0.02*torch.sign(self.controller.body_drone_linvels)*self.controller. body_drone_linvels**2
 self.forces[:,0,2] = common_thrust
 self.forces[:,0,:] += self.friction[:,0,:]
@@ -40,6 +42,7 @@ self.forces[:,0,:] += self.friction[:,0,:]
 
 ## test 3
 ```
+# change 0.02 to 0.001
 self.friction[:, 0, :] = 0.001*torch.sign(self.controller.body_drone_linvels)*self.controller. body_drone_linvels**2
 self.forces[:,0,2] = common_thrust
 self.forces[:,0,:] += self.friction[:,0,:]
@@ -55,11 +58,24 @@ self.forces[:,0,:] += self.friction[:,0,:]
 </div>
 
 ## test 4
+For the drone, we only set the torque on x,y,z and the thrust on z. Due to the presence of air, the friction on x,y,z should be considered. The friction has the opposite direction to the thrust and it also changes with time. When setting the force on the drone, the force on x,y is the  friction and the force on z is the common_thrust. So I guess the force on x,y should not be able to accumulate because it is friction which changes with time and could not be accumulated.
+In previouse calculation, self.forces is initialized only once at the beginning of the program.
+If we use this method to calculate the force.
+
+```
+self.forces[:,0,:] += self.friction[:,0,:]
+```
+
+This will causes the force on x,y to accumulate in subsequent calculations. Thus, I revise the calculation of self.forces.
+
 ```
 self.friction[:, 0, :] = 0.02*torch.sign(self.controller.body_drone_linvels)*self.controller. body_drone_linvels**2
 self.forces = self.friction.clone()
 self.forces[:,0,2] = common_thrust
 ```
+
+Now, the force on x,y is friction, and on z common_thrust.
+
 <div style="display: flex;">
   <img src="https://github.com/zerojuhao/record/blob/main/image/drone_linvel_4.png" style="width: 400px; height: auto;">
   <img src="https://github.com/zerojuhao/record/blob/main/image/linvel_4.png" style="width: 400px; height: auto;">
@@ -74,7 +90,7 @@ self.forces[:,0,2] = common_thrust
 ```
 self.friction[:, 0, :] = 0.02*torch.sign(self.controller.body_drone_linvels)*self.controller. body_drone_linvels**2
 self.forces = self.friction.clone()
-self.forces[:,0,2] += common_thrust
+self.forces[:,0,2] += common_thrust # The force on x,y is friction, and on z common_thrust+friction
 ```
 <div style="display: flex;">
   <img src="https://github.com/zerojuhao/record/blob/main/image/drone_linvel_5.png" style="width: 400px; height: auto;">
