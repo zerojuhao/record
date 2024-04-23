@@ -1,4 +1,4 @@
-# Record for the modification of force on the drone
+# Modification of force on the drone
 
 ## test 1
 ```
