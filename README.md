@@ -58,7 +58,11 @@ self.forces[:,0,:] += self.friction[:,0,:]
 </div>
 
 ## test 4
-For the drone, we only set the torque on x,y,z and the thrust on z. Due to the presence of air, the friction on x,y,z should be considered. The friction has the opposite direction to the thrust and it also changes with time. When setting the force on the drone, the force on x,y is the  friction and the force on z is the common_thrust. So I guess the force on x,y should not be able to accumulate because it is friction which changes with time and could not be accumulated.
+For the drone, we only have 2 setting:
+1. the torque on x,y,z
+2. he thrust on z
+
+Due to the presence of air, the friction on x,y,z should be considered. The friction has the opposite direction to the thrust and it also changes with time. When setting the force on the drone, the force on x,y is the  friction and the force on z is the common_thrust. So I guess the force on x,y should not be able to accumulate because it is friction which changes with time and could not be accumulated.
 In previouse calculation, self.forces is initialized only once at the beginning of the program.
 If we use this method to calculate the force.
 
@@ -66,7 +70,7 @@ If we use this method to calculate the force.
 self.forces[:,0,:] += self.friction[:,0,:]
 ```
 
-This will causes the force on x,y to accumulate in subsequent calculations. Thus, I revise the calculation of self.forces.
+This will causes the force on x,y to accumulate in subsequent calculations. Anyway, the force on x,y should not be large because it is friction. Thus, I revise the calculation of self.forces.
 
 ```
 self.friction[:, 0, :] = 0.02*torch.sign(self.controller.body_drone_linvels)*self.controller. body_drone_linvels**2
