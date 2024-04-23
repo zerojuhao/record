@@ -95,10 +95,11 @@ Now, the force on x,y is friction, and on z common_thrust.
 </div>
 
 ## test 5
+The force on x,y is friction, and on z common_thrust+friction
 ```
 self.friction[:, 0, :] = 0.02*torch.sign(self.controller.body_drone_linvels)*self.controller. body_drone_linvels**2
 self.forces = self.friction.clone()
-self.forces[:,0,2] += common_thrust # The force on x,y is friction, and on z common_thrust+friction
+self.forces[:,0,2] += common_thrust
 ```
 <div style="display: flex;">
   <img src="https://github.com/zerojuhao/record/blob/main/image/drone_linvel_5.png" style="width: 400px; height: auto;">
