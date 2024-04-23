@@ -1,4 +1,4 @@
-# record for friction 
+# Record for friction 
 
 
 
@@ -21,7 +21,7 @@ self.friction[:, 0, :] = -0.02*torch.sign(self.controller.body_drone_linvels)*se
 
 ## test 2
 ```
-self.friction[:, 0, :] = -0.02*torch.sign(self.controller.body_drone_linvels)*self.controller. body_drone_linvels**2
+self.friction[:, 0, :] = 0.02*torch.sign(self.controller.body_drone_linvels)*self.controller. body_drone_linvels**2
 ```
 
 <div style="display: flex;">
