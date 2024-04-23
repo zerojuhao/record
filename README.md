@@ -9,8 +9,8 @@ self.friction[:, 0, :] = 0.02*torch.sign(self.controller.body_drone_linvels)*sel
 ```
 
 <div style="display: flex;">
-  <img src="https://github.com/zerojuhao/record/blob/main/image/drone_linvel_1.png" alt="Image 1" style="width: 300px; height: auto;">
-  <img src="https://github.com/zerojuhao/record/blob/main/image/linvel_1.png" alt="Image 2" style="width: 300px; height: auto;">
+  <img src="https://github.com/zerojuhao/record/blob/main/image/drone_linvel_1.png" alt="Image 1" style="width: 400px; height: auto;">
+  <img src="https://github.com/zerojuhao/record/blob/main/image/linvel_1.png" alt="Image 2" style="width: 400px; height: auto;">
 </div>
 
 <img src="https://github.com/zerojuhao/record/blob/main/image/drone_linvel_1.png" alt="Description" width="300px" />
