@@ -1,7 +1,4 @@
-# Record for friction 
-
-
-
+# Record for the modification of force on the drone
 
 ## test 1
 ```
