@@ -7,6 +7,14 @@
 ```
 self.friction[:, 0, :] = 0.02*torch.sign(self.controller.body_drone_linvels)*self.controller. body_drone_linvels**2
 ```
+
+<div style="display: inline-block; margin-right: 20px;">
+  <img src="https://github.com/zerojuhao/record/blob/main/image/drone_linvel_1.png" alt="Image 1" width="300">
+</div>
+<div style="display: inline-block;">
+  <img src="https://github.com/zerojuhao/record/blob/main/image/linvel_1.png" alt="Image 2" width="300">
+</div>
+
 <img src="https://github.com/zerojuhao/record/blob/main/image/drone_linvel_1.png" alt="Description" width="300px" />
 <img src="https://github.com/zerojuhao/record/blob/main/image/linvel_1.png" alt="Description" width="300px" />
 <img src="https://github.com/zerojuhao/record/blob/main/image/friction_1.png" alt="Description" width="300px" />
