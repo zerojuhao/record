@@ -3,7 +3,7 @@
 
 
 
-#test 1
+## test 1
 ```
 self.friction[:, 0, :] = 0.02*torch.sign(self.controller.body_drone_linvels)*self.controller. body_drone_linvels**2
 ```
