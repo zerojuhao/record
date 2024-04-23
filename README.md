@@ -5,7 +5,8 @@
 
 #test 1
 -------------------------------------------------------------------------------------------------------------------
-'self.friction[:, 0, :] = 0.02*torch.sign(self.controller.body_drone_linvels)*self.controller. body_drone_linvels**2'
+'''
+self.friction[:, 0, :] = 0.02*torch.sign(self.controller.body_drone_linvels)*self.controller. body_drone_linvels**2
 
 <img src="https://github.com/zerojuhao/record/blob/main/image/drone_linvel_1.png" alt="Description" width="300px" />
 
