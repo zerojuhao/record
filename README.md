@@ -1,8 +1,9 @@
 # Modification of force on the drone
 
 ## test 1
+initial version
+
 ```
-# initial version
 self.friction[:, 0, :] = -0.02*torch.sign(self.controller.body_drone_linvels)*self.controller. body_drone_linvels**2
 self.forces[:,0,2] = common_thrust
 self.forces[:,0,:] += self.friction[:,0,:]
@@ -20,8 +21,9 @@ self.forces[:,0,:] += self.friction[:,0,:]
 
 
 ## test 2
+remove the minus sign in self.friction
+
 ```
-# remove the minus sign in self.friction
 self.friction[:, 0, :] = 0.02*torch.sign(self.controller.body_drone_linvels)*self.controller. body_drone_linvels**2
 self.forces[:,0,2] = common_thrust
 self.forces[:,0,:] += self.friction[:,0,:]
@@ -38,8 +40,9 @@ self.forces[:,0,:] += self.friction[:,0,:]
 </div>
 
 ## test 3
+change 0.02 to 0.001
+
 ```
-# change 0.02 to 0.001
 self.friction[:, 0, :] = 0.001*torch.sign(self.controller.body_drone_linvels)*self.controller. body_drone_linvels**2
 self.forces[:,0,2] = common_thrust
 self.forces[:,0,:] += self.friction[:,0,:]
