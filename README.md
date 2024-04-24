@@ -1,5 +1,7 @@
 # Modification of force on the drone
 
+**In these tests, the drone needs to fly from (0,0,1) to (2,0,1) on x-axis**
+
 ## test 1
 initial version
 
