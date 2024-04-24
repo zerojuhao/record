@@ -96,6 +96,8 @@ Now, the force on x,y is friction, and on z common_thrust.
   <img src="https://github.com/zerojuhao/record/blob/main/image/force_4.png" style="width: 400px; height: auto;">
 </div>
 
+<img src="https://github.com/zerojuhao/record/blob/main/image/4.gif" style="width: 400px; height: auto;">
+
 ## test 5
 The force on x,y is friction, and on z common_thrust + friction
 ```
