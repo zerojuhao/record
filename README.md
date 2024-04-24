@@ -112,3 +112,20 @@ self.forces[:,0,2] += common_thrust
   <img src="https://github.com/zerojuhao/record/blob/main/image/friction_5.png" style="width: 400px; height: auto;">
   <img src="https://github.com/zerojuhao/record/blob/main/image/force_5.png" style="width: 400px; height: auto;">
 </div>
+
+## test 6
+use self.root_linvels not self.controller.body_drone_linvels
+```
+self.friction[:, 0, :] = -0.02 * torch.sign(self.root_linvels) * self.root_linvels ** 2
+self.forces = self.friction.clone()
+self.forces[:,0,2] += common_thrust
+```
+<div style="display: flex;">
+  <img src="https://github.com/zerojuhao/record/blob/main/image/drone_linvel_6.png" style="width: 400px; height: auto;">
+  <img src="https://github.com/zerojuhao/record/blob/main/image/linvel_6.png" style="width: 400px; height: auto;">
+</div>
+
+<div style="display: flex;">
+  <img src="https://github.com/zerojuhao/record/blob/main/image/friction_6.png" style="width: 400px; height: auto;">
+  <img src="https://github.com/zerojuhao/record/blob/main/image/force_6.png" style="width: 400px; height: auto;">
+</div>
