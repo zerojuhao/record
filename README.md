@@ -115,6 +115,8 @@ self.forces[:,0,2] += common_thrust
   <img src="https://github.com/zerojuhao/record/blob/main/image/force_5.png" style="width: 400px; height: auto;">
 </div>
 
+<img src="https://github.com/zerojuhao/record/blob/main/image/5.gif" style="width: 400px; height: auto;">
+
 ## test 6
 use self.root_linvels not self.controller.body_drone_linvels
 ```
@@ -132,6 +134,8 @@ self.forces[:,0,2] += common_thrust
   <img src="https://github.com/zerojuhao/record/blob/main/image/force_6.png" style="width: 400px; height: auto;">
 </div>
 
+<img src="https://github.com/zerojuhao/record/blob/main/image/6.gif" style="width: 400px; height: auto;">
+
 ## test 7
 I guess the friction should be limited to a reasonable range.
 ```
@@ -148,3 +152,5 @@ self.forces[:,0,2] += common_thrust
   <img src="https://github.com/zerojuhao/record/blob/main/image/friction_7.png" style="width: 400px; height: auto;">
   <img src="https://github.com/zerojuhao/record/blob/main/image/force_7.png" style="width: 400px; height: auto;">
 </div>
+
+<img src="https://github.com/zerojuhao/record/blob/main/image/7.gif" style="width: 400px; height: auto;">
