@@ -64,11 +64,11 @@ For the drone, we only have 2 setting from CTBR and NN:
 1. the total_torque on x,y,z
 2. the common_thrust on z
 
-Due to the presence of air, the friction on x,y,z should be considered.The friction has the opposite direction to the thrust and it also changes with time
+Due to the presence of air, the friction on x,y,z is considered.The friction has the opposite direction to the thrust and it also changes with time.
 
-When setting the force on the drone, the force on x,y is the friction and the force on z is the common_thrust.
+When setting the force on the drone, the force on x,y should be the friction and the force on z should be the common_thrust.
 
-**I guess the force on x,y should not be able to accumulate because it is friction which could not be accumulated.**
+**So I guess the force on x,y should not be able to accumulate, because it is friction which should not be accumulated.**
 
 In previouse calculation, self.forces is initialized only once at the beginning of the program. If we use this method to calculate the force.
 
@@ -76,7 +76,7 @@ In previouse calculation, self.forces is initialized only once at the beginning 
 self.forces[:,0,:] += self.friction[:,0,:]
 ```
 
-In fact, this will cause the force on x,y to accumulate in subsequent calculation and finally become pretty large to make the drone out of control. Anyway, I think the force on x,y should not be quite large because it is friction. Thus, I revise the calculation of self.forces.
+In fact, this will cause the force on x,y to accumulate in subsequent calculation and finally become pretty large to make the drone out of control. Thus, I revise the calculation of self.forces.
 
 ```
 self.friction[:, 0, :] = 0.02*torch.sign(self.controller.body_drone_linvels)*self.controller. body_drone_linvels**2
