@@ -61,8 +61,8 @@ self.forces[:,0,:] += self.friction[:,0,:]
 
 ## test 4
 For the drone, we only have 2 setting:
-1. the torque on x,y,z
-2. the thrust (common_thrust) on z
+1. the total_torque on x,y,z
+2. the common_thrust on z
 
 Due to the presence of air, the friction on x,y,z should be considered.The friction has the opposite direction to the thrust and it also changes with time
 
