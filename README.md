@@ -60,7 +60,7 @@ self.forces[:,0,:] += self.friction[:,0,:]
 </div>
 
 ## test 4
-For the drone, we only have 2 setting:
+For the drone, we only have 2 setting from CTBR and NN:
 1. the total_torque on x,y,z
 2. the common_thrust on z
 
