@@ -154,3 +154,24 @@ self.forces[:,0,2] += common_thrust
 </div>
 
 <img src="https://github.com/zerojuhao/record/blob/main/image/7.gif" style="width: 400px; height: auto;">
+
+## test 8
+```
+self.friction[:, 0, :] = -0.001*torch.sign(self.root_linvels)*self.root_linvels**2
+self.friction = torch.clamp(self.friction, -0.005, 0.005)
+self.forces = self.friction.clone()
+self.forces[:,0,2] += common_thrust
+```
+```
+d = 0.4
+pos_reward = target_dist.clone()
+pos_reward[(last_target_dist-target_dist)<=0] = 0
+pos_reward[(last_target_dist-target_dist)>0] = 0.8/(1+10*target_dist[(last_target_dist-target_dist)>0])+d/(1+10*target_dist_next[(last_target_dist-target_dist)>0])+d*d/(1+10*target_dist_next_next[(last_target_dist-target_dist)>0])
+
+velocity = torch.norm(root_linvels, dim=-1)
+velocity_reward = velocity.clone()
+velocity_reward[velocity>=1] = -velocity_reward[velocity>=1]
+velocity_reward[velocity<=0.2] = -1/(1 + velocity_reward[velocity<=0.2])
+
+reward = pos_reward + access
+```
