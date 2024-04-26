@@ -174,8 +174,8 @@ pos_reward[(last_target_dist-target_dist)>0] = 0.8/(1+10*target_dist[(last_targe
 
 velocity = torch.norm(root_linvels, dim=-1)
 velocity_reward = velocity.clone()
-velocity_reward[velocity>=1] = -velocity_reward[velocity>=1]
-velocity_reward[velocity<=0.2] = -1/(1 + velocity_reward[velocity<=0.2])
+velocity_reward[velocity>=1] = 0
+velocity_reward[velocity<=0.2] = 0
 
 reward = pos_reward + access
 ```
