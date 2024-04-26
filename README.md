@@ -175,11 +175,18 @@ pos_reward[(last_target_dist-target_dist)>0] = 0.8/(1+10*target_dist[(last_targe
 velocity = torch.norm(root_linvels, dim=-1)
 velocity_reward = velocity.clone()
 velocity_reward[velocity>=1] = 0
-velocity_reward[velocity<=0.2] = 0
 
 reward = pos_reward + access
 ```
+<div style="display: flex;">
+  <img src="https://github.com/zerojuhao/record/blob/main/image/drone_linvel_8.png" style="width: 400px; height: auto;">
+  <img src="https://github.com/zerojuhao/record/blob/main/image/linvel_8.png" style="width: 400px; height: auto;">
+</div>
 
+<div style="display: flex;">
+  <img src="https://github.com/zerojuhao/record/blob/main/image/friction_8.png" style="width: 400px; height: auto;">
+  <img src="https://github.com/zerojuhao/record/blob/main/image/force_8.png" style="width: 400px; height: auto;">
+</div>
 
 
 
