@@ -213,6 +213,20 @@ reward = pos_reward + access
   <img src="https://github.com/zerojuhao/record/blob/main/image/force_8.png" style="width: 400px; height: auto;">
 </div>
 
-# Weekly Summary
+# Weekly Summary 2024-4-30
+I tried many, many different reward functions but could not ever find one that would work.
 
+The above test is only a small part of the logging, but it made me notice something: the values for "body_drone_linvels" look strange and are very different from "root_linvels".
+
+In CTBR controller, I notice:
+```
+# Compute velocities wrt drone body frame
+self.body_drone_angvels[:] = self.quat_rotate_inverse(drone_quats, drone_angvels)
+self.body_drone_linvels[:] = self.quat_rotate_inverse(drone_quats, drone_linvels)
+```
+"body_drone_linvels" is the line velocity with respect to the drone frame. So, the 2 output of CTBR controller, "common_thrust" and "total_torque" are also the parameters in this coordinate system (drone body).
+
+However, when we use "self.gym.apply_rigid_body_force_tensors" to set force and torque on the drone, the coordinate system seems to be the space of Isaac Gym, not the drone itself.
+
+So I guess we need to further process the output of CTBR controller so that its coordinate system is Isaac Gym space instead of the drone body.
 
