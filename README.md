@@ -73,6 +73,7 @@ When setting the force on the drone, the force on x,y should be the friction and
 In previouse calculation, self.forces is initialized only once at the beginning of the program. If we use this method to calculate the force.
 
 ```
+self.forces[:,0,2] = common_thrust
 self.forces[:,0,:] += self.friction[:,0,:]
 ```
 
@@ -139,6 +140,7 @@ self.forces[:,0,2] += common_thrust
 ## test 7
 I guess the friction should be limited to a reasonable range.
 ```
+self.friction[:, 0, :] = -0.02 * torch.sign(self.root_linvels) * self.root_linvels ** 2
 self.friction = torch.clamp(self.friction, -0.02, 0.02)
 self.forces = self.friction.clone()
 self.forces[:,0,2] += common_thrust
@@ -188,5 +190,6 @@ reward = pos_reward + access
   <img src="https://github.com/zerojuhao/record/blob/main/image/force_8.png" style="width: 400px; height: auto;">
 </div>
 
+# Weekly Summary
 
 
