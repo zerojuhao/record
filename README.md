@@ -10,7 +10,29 @@ self.friction[:, 0, :] = -0.02*torch.sign(self.controller.body_drone_linvels)*se
 self.forces[:,0,2] = common_thrust
 self.forces[:,0,:] += self.friction[:,0,:]
 ```
+reward function
 
+```
+# position
+target_dist = torch.sqrt(torch.square(target_root_positions - root_positions).sum(-1))
+target_dist_next = torch.sqrt(torch.square(target_next_positions - root_positions).sum(-1))
+target_dist_next_next = torch.sqrt(torch.square(target_next_next_positions - root_positions).sum(-1))
+d = 0.4
+pos_reward = 1 / (1 + target_dist * target_dist) + d / (1 + target_dist_next * target_dist_next) + d*d / (1 + target_dist_next_next * target_dist_next_next)
+
+# access
+access = target_dist.clone()
+access[target_dist>=0.01] = 0
+access[target_dist<0.01] = 10
+
+# velocity
+velocity = torch.norm(root_linvels, dim=-1)
+velocity_reward = velocity.clone()
+# velocity_reward[velocity>=1] = 0
+# velocity_reward[velocity<=0.2] = 0
+
+reward = pos_reward + access + 0.1*velocity_reward
+```
 <div style="display: flex;">
   <img src="https://github.com/zerojuhao/record/blob/main/image/drone_linvel_1.png" style="width: 400px; height: auto;">
   <img src="https://github.com/zerojuhao/record/blob/main/image/linvel_1.png" style="width: 400px; height: auto;">
@@ -166,9 +188,10 @@ self.forces = self.friction.clone()
 self.forces[:,0,2] += common_thrust
 ```
 
-reward function
+NEW reward function
 
 ```
+# Drone is only rewarded when flying towards a target point
 d = 0.4
 pos_reward = target_dist.clone()
 pos_reward[(last_target_dist-target_dist)<=0] = 0
