@@ -16,7 +16,12 @@ self.friction[:, 0, :] = -0.005*torch.sign(self.root_linvels)*self.root_linvels*
 self.friction = torch.clamp(self.friction, -0.005, 0.005)
 self.forces = self.friction.clone()
 self.forces[:,0,2] += common_thrust
+# force on x: friction
+# force on y: friction
+# force on z: friction + collective_thrust
 ```
+
+
 
 <video src="https://github.com/zerojuhao/record/blob/main/image/24-5-7-1.webm" style="width: 600px; height: auto;">
 In the image above, the drone's task is to fly from (0,0,1) to (1,0,1)
