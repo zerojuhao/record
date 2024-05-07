@@ -6,7 +6,7 @@ In "CTBRcontroller.py"-"update", we use the quaternion to change the coordinate 
 There is no issue with this code when the drone is in a horizontal position. But when the drone is tilted, the collective thrust should be decomposed into three forces in the x-y-z direction, not only 1 force in z direction. In the current code, we only have an upward thrust when we set "apply_rigid_body_force_tensors", so we assume it is difficult for the drone to handle horizontal tasks such as flying forward and right.
 
 To test our hypotheses, we have tests below:
-
+## test 1
 ```
 total_torque, common_thrust = self.controller.update(actions, 
                                                         self.root_quats, 
@@ -30,3 +30,6 @@ In the image above, the drone's task is to fly from (0,0,1) to (1,0,1)
 In the image above, the drone's task is to fly from (0,0,1) to (0,0,1.5)
 
 Obviously, neither task was well done.
+
+## test 2
+We also try to use another calculation method of force
