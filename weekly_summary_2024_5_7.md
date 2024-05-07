@@ -23,10 +23,10 @@ self.forces[:,0,2] += common_thrust
 
 
 
-<video src="https://github.com/zerojuhao/record/blob/main/image/24-5-7-1.webm" style="width: 600px; height: auto;">
+<img src="https://github.com/zerojuhao/record/blob/main/image/24-5-7-1.gif" style="width: 600px; height: auto;">
 In the image above, the drone's task is to fly from (0,0,1) to (1,0,1)
 
-<video src="https://github.com/zerojuhao/record/blob/main/image/24-5-7-2.gif" style="width: 600px; height: auto;">
+<img src="https://github.com/zerojuhao/record/blob/main/image/24-5-7-2.gif" style="width: 600px; height: auto;">
 In the image above, the drone's task is to fly from (0,0,1) to (0,0,1.5)
 
 Obviously, neither task was well done.
