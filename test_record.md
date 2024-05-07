@@ -229,4 +229,3 @@ self.body_drone_linvels[:] = self.quat_rotate_inverse(drone_quats, drone_linvels
 However, when we use "self.gym.apply_rigid_body_force_tensors" to set force and torque on the drone, the coordinate system seems to be the space of Isaac Gym, not the drone itself.
 
 So I guess we need to further process the output of CTBR controller so that its coordinate system is Isaac Gym space instead of the drone body.
-
