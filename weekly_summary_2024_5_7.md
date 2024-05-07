@@ -3,7 +3,7 @@ We tried more tests. We found:
 
 In "CTBRcontroller.py"-"update", we use the quaternion to change the coordinate system to the drone itself to calculate torque and collective thrust. And finally, we use matrix inv_A to change the coordinate system to Isaac Gym to set force and torque on the rigid body.
 
-There is no issue with this code when the drone is in a horizontal position. But when the drone is tilted, the collective thrust should be decomposed into three forces in the x-y-z direction, not only 1 force in z direction. But in the current code, we only have an upward thrust when we set "apply_rigid_body_force_tensors".
+If the coordinate system is Isaac Gym space, when the drone is tilted, the collective thrust should be decomposed into three forces in the x-y-z direction, not only 1 force in z direction. But in the current code, we only have an upward thrust when we set "apply_rigid_body_force_tensors".
 
 To test our hypotheses, we have tests below:
 ## test 1
